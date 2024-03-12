@@ -33,6 +33,7 @@ $message = "";
       $logins = $l->getMembers();
       $email = $_POST["email"];
       $mdp = $_POST["password"];
+      var_dump($logins);
       if ($l->checkAcces($logins, $email, $mdp)) {
         $l->connect();
       } else {
