@@ -1,7 +1,7 @@
 <!-- Page login -->
 <?php
 
-require "db.php";
+require "classes/db.php";
 require "classes/log.php";
 $f = new log;
 $params=[];
