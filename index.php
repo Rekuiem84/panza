@@ -2,11 +2,13 @@
 <?php
 
 require "classes/db.php";
+require "classes/form.php";
 require "classes/log.php";
 
 session_start();
 
-$f = new log;
+$f = new form;
+$l = new log;
 $params = [];
 $errors = [];
 $message = "";
@@ -28,11 +30,11 @@ $message = "";
 
   if ($f->isSubmitted()) {
     if ($f->isValid($params)) {
-      $logins = $f->getMembers();
+      $logins = $l->getMembers();
       $email = $_POST["email"];
       $mdp = $_POST["password"];
-      if ($f->checkAcces($logins, $email, $mdp)) {
-        $f->connect();
+      if ($l->checkAcces($logins, $email, $mdp)) {
+        $l->connect();
       } else {
         $message = "Email ou mot de passe incorrect";
       }
