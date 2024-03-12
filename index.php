@@ -1,11 +1,12 @@
 <!-- Page login -->
 <?php
 
-require "db.php";
+require "classes/db.php";
 require "classes/log.php";
 $f = new log;
 $params=[];
 $errors=[];
+$message="";
 
 ?>
 <!DOCTYPE html>
@@ -24,6 +25,12 @@ $errors=[];
 
     if ($f->isSubmitted()) {
       if ($f->isValid($params)) {
+        $logins = $f->getMembers();
+        $email=$_POST["email"];
+        $mdp=$_POST["password"];
+          if ($f->checkAcces($logins,$email,$mdp)) {
+            $message = "gg t'as réussi le boss";
+          }
         
       }else{
         $errors=$f->getErrors();
@@ -52,6 +59,8 @@ $errors=[];
     </div>
     <button>Se connecter</button>
   </form>
+
+  <?= $message ?>
 
 </body>
 
