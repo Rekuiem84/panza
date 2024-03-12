@@ -22,6 +22,7 @@
       <div><label for="address">Adresse</label><input type="text" id="address" name="address"></div>
       <div><label for="nb_comedians">Nombre de comédiens</label><input type="text" id="nb_comedians" name="nb_comedians"></div>
       <div><label for="description">Description</label><textarea id="description" name="description"></textarea></div>
+      <button type="submit">Ajouter le spectacle</button>
     </form>
   </main>
 </body>
