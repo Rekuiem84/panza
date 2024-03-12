@@ -58,14 +58,7 @@ Class spec{
     {
         return $this->heure;
     }
-
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-
+    
 
     public function insertSpectacle($nom,$categorie,$description,$date,$nbrcom,$heure){
     $co = new Db();
