@@ -12,11 +12,9 @@ Class log{
     public function getID(){
         return $this->id;
     }
-
     public function getEmail(){
         return $this->email;
     }
-
     public function getMdp(){
         return $this->mdp;
     }
@@ -24,8 +22,7 @@ Class log{
 
     public function setEmail($email){
     $this->email = $email;
-    }
-        
+    }    
     public function setMotdepasse($mdp){
     $this->mdp = $mdp;
     }
@@ -35,7 +32,6 @@ Class log{
         return !empty($_POST);
     }
 
-
     public function isValid($params){
         $validated=false;
         if(!empty($_POST["email"]) && !empty($_POST["password"])){
@@ -43,7 +39,6 @@ Class log{
         }
         return $validated;
     }
-
 
     public function getErrors(){
         $errors=[
@@ -53,8 +48,7 @@ Class log{
         return $errors;
     }
 
-
-    /* Doit renvoyer un array avec toute les informations */
+    /* Renvoie un array avec toute les informations */
     public function getMembers(){
         $co = new Db;
         $db = $co->dbCo("panza","root","root");
