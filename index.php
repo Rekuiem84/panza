@@ -1,4 +1,13 @@
 <!-- Page login -->
+<?php
+
+require "db.php";
+require "classes/log.php";
+$f = new log;
+$params=[];
+$errors=[];
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,14 +20,28 @@
 
 <body>
 
+  <?php
+
+    if ($f->isSubmitted()) {
+      if ($f->isValid($params)) {
+        
+      }else{
+        $errors=$f->getErrors();
+      }
+    }
+
+  ?>
+
   <form action="" method="POST">
     <div>
       <label for="email">Email</label>
-      <input type="email" name="email" id="email" placeholder="votremail@exemple.com">
+      <input type="email" name="email" id="email" placeholder="votremail@exemple.com" value="<?php if($f->isSubmitted()){if(!empty($_POST["email"])){echo $_POST["email"];}}?>">
+      <p><?php if($f->isSubmitted()){if(!($f->isValid($params))){echo $errors["email"];}}?></p>
     </div>
     <div>
       <label for="password">Mot de passe</label>
       <input type="password" name="password" id="password" placeholder="*************">
+      <p><?php if($f->isSubmitted()){if(!($f->isValid($params))){echo $errors["mdp"];}}?></p>
     </div>
     <div>
       <input type="checkbox" name="checkbox" id="checkbox">
