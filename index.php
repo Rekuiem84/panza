@@ -29,10 +29,10 @@ $message="";
         $email=$_POST["email"];
         $mdp=$_POST["password"];
           if ($f->checkAcces($logins,$email,$mdp)) {
-            $message = "gg t'as réussi le boss";
+            $f->connect();
           }
           else{
-            $message = "ça correspond pas";
+            $message = "Email ou mot de passe incorrect";
           }
       }else{
         $errors=$f->getErrors();
@@ -41,7 +41,7 @@ $message="";
 
   ?>
 
-  <form action="" method="POST">
+  <form action="#" method="POST">
     <div>
       <label for="email">Email</label>
       <input type="email" name="email" id="email" placeholder="votremail@exemple.com" value="<?php if($f->isSubmitted()){if(!empty($_POST["email"])){echo $_POST["email"];}}?>">
@@ -62,7 +62,7 @@ $message="";
     <button>Se connecter</button>
   </form>
 
-  <?= $message ?>
+  <p><?= $message ?></p>
 
 </body>
 

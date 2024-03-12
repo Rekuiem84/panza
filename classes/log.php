@@ -86,8 +86,8 @@ class log
 
 
 
-
     public function connect()
     {
+        header("Location:calendrier.php");
     }
 }
