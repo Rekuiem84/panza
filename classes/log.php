@@ -53,7 +53,7 @@ Class log{
         $co = new Db;
         $db = $co->dbCo("panza","root","root");
 
-        $sql = "SELECT `email`, SHA1(`mot_de_passe`) FROM `membre`";
+        $sql = "SELECT `email`, SHA1(`mot_de_passe`) mot_de_passe FROM `membre` order by id desc";
         $datas = $co->SQLWithoutParam($sql,$db);
 
         return $datas;
@@ -61,15 +61,19 @@ Class log{
 
     /* Doit renvoyer un bool*/
     public function checkAcces($logins,$email,$mdp){
-        $result = false;
+        echo "<br><br>";
         foreach($logins as $value){
-        $email2 = $value["email"];
-        $mdp2 = $value["mot_de_passe"];
-        if($email2 === $email && $mdp2 === $mdp){
-        $result = $value;
-        }
-        }
-        return $result;
+            $email2 = $value["email"];
+            if ($email2 === $email) {
+                $mdp2 = $value["mot_de_passe"];
+                $mdp = sha1($mdp);
+                if ($mdp2 === $mdp) {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }}
     }
 
 

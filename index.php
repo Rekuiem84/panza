@@ -31,6 +31,9 @@ $message="";
           if ($f->checkAcces($logins,$email,$mdp)) {
             $message = "gg t'as réussi le boss";
           }
+          else{
+            $message = "ça correspond pas";
+          }
         
       }else{
         $errors=$f->getErrors();
