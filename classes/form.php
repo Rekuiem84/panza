@@ -50,4 +50,24 @@ class Form
         ];
         return $errors;
     }
+
+    public function isValidMembre($params)
+    {
+        $validated = false;
+        if (!empty($_POST["prenom"]) && !empty($_POST["nom"]) && !empty($_POST["email"]) && !empty($_POST["mdp"])) {
+            $validated = true;
+        }
+        return $validated;
+    }
+
+    public function getErrorsMembre()
+    {
+        $errors = [
+            "prenom" => empty($_POST["prenom"]) ? "Merci de renseigner le prenom" : "",
+            "nom" => empty($_POST["nom"]) ? "Merci de renseigner le nom" : "",
+            "email" => empty($_POST["email"]) ? "Merci de renseigner l'email" : "",
+            "mdp" => empty($_POST["mdp"]) ? "Merci de renseigner le mot de passe" : ""
+        ];
+        return $errors;
+    }
 }
