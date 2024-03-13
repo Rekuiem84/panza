@@ -15,6 +15,6 @@ class membre
 
   public function refresh()
   {
-    header("Location:membre.php");
+    header("Location:new_membre.php");
   }
 }
