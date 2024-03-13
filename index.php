@@ -30,11 +30,9 @@ $message = "";
   <?php
   if ($f->isSubmitted()) {
     if ($f->isValid($params)) {
-      $logins = $l->getMembers();
       $email = $_POST["email"];
       $mdp = $_POST["password"];
-      var_dump($logins);
-      if ($l->checkAcces($logins, $email, $mdp)) {
+      if ($l->checkAccess($email, $mdp)) {
         $l->connect();
       } else {
         $message = "Email ou mot de passe incorrect";
@@ -92,7 +90,7 @@ $message = "";
         </div>
         <button>Se connecter</button>
       </form>
-      <p><?= $message ?></p>
+      <p data-type="error"><?= $message ?></p>
     </div>
   </main>
 
