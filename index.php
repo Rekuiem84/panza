@@ -3,12 +3,12 @@
 
 require "classes/db.php";
 require "classes/form.php";
-require "classes/log.php";
+require "classes/login.php";
 
 session_start();
 
-$f = new form;
-$l = new log;
+$form = new Form;
+$login = new Login;
 $params = [];
 $errors = [];
 $message = "";
@@ -28,17 +28,19 @@ $message = "";
 <body>
 
   <?php
-  if ($f->isSubmitted()) {
-    if ($f->isValid($params)) {
+  if ($form->isSubmitted()) {
+    if ($form->isValidLoginForm($params)) {
       $email = $_POST["email"];
       $mdp = $_POST["password"];
-      if ($l->checkAccess($email, $mdp)) {
-        $l->connect();
+      if ($login->checkAccess($email, $mdp)) {
+        $_SESSION["isConnected"] = true;
+        $_SESSION["isAdmin"] = true;
+        $login->connect();
       } else {
         $message = "Email ou mot de passe incorrect";
       }
     } else {
-      $errors = $f->getErrors();
+      $errors = $form->getErrors();
     }
   }
   ?>
@@ -61,13 +63,13 @@ $message = "";
         <div class="login__field">
           <label for="email">Email</label>
           <input type="email" name="email" id="email" placeholder="votremail@exemple.com" value="
-          <?php if ($f->isSubmitted()) {
+          <?php if ($form->isSubmitted()) {
             if (!empty($_POST["email"])) {
               echo $_POST["email"];
             }
           } ?>">
-          <p><?php if ($f->isSubmitted()) {
-                if (!($f->isValid($params))) {
+          <p><?php if ($form->isSubmitted()) {
+                if (!($form->isValidLoginForm($params))) {
                   echo $errors["email"];
                 }
               } ?></p>
@@ -75,8 +77,8 @@ $message = "";
         <div class="login__field">
           <label for="password">Mot de passe</label>
           <input type="password" name="password" id="password" placeholder="••••••••••">
-          <p><?php if ($f->isSubmitted()) {
-                if (!($f->isValid($params))) {
+          <p><?php if ($form->isSubmitted()) {
+                if (!($form->isValidLoginForm($params))) {
                   echo $errors["mdp"];
                 }
               } ?></p>

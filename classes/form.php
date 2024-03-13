@@ -1,41 +1,43 @@
 <?php
 
-class form{
-
-      public function isSubmitted()
+class Form
+{
+    // Cette fonction vérifie si le formulaire a été soumis 
+    public function isSubmitted(): bool
     {
         return !empty($_POST);
     }
 
-    public function isValid($params)
+    // Cette fonction vérifie tous les champs du formulaire de login sont remplis
+    public function isValidLoginForm(): bool
     {
-        $validated = false;
-        if (!empty($_POST["email"]) && !empty($_POST["password"])) {
-            $validated = true;
-        }
-        return $validated;
+        return (!empty($_POST["email"]) && !empty($_POST["password"]));
     }
 
-    public function getErrors()
+    // Cette fonction renvoie un array avec les erreurs de validation du formulaire
+    public function getErrors(): array
     {
         $errors = [
             "email" => empty($_POST["email"]) ? "Merci de renseigner votre email" : "",
             "mdp" => empty($_POST["password"]) ? "Merci de renseigner votre mot de passe" : ""
         ];
         return $errors;
-      
     }
 
-    public function isValidSpec($params)
+    // Cette fonction vérifie si les champs spécifiés dans le paramètre $params sont valides (non vides)
+    // $params est un array associatif
+    public function isValidAnyForm($params): bool
     {
-        $validated = false;
-        if (!empty($_POST["name"]) && !empty($_POST["category"]) && !empty($_POST["date"]) &&!empty($_POST["start_time"]) && !empty($_POST["address"]) && !empty($_POST["nb_comedians"]) && !empty($_POST["description"])) {
-            $validated = true;
+        foreach ($params as $param) {
+            if (empty($_POST[$param])) {
+                return false;
+            }
         }
-        return $validated;
+        return true;
     }
 
-      public function getErrorsSpec()
+    // Cette fonction renvoie un array avec les erreurs de validation du formulaire de création de spectacle
+    public function getErrorsSpec(): array
     {
         $errors = [
             "name" => empty($_POST["name"]) ? "Merci de renseigner le nom" : "",
@@ -47,8 +49,5 @@ class form{
             "description" => empty($_POST["description"]) ? "Merci de renseigner la description" : ""
         ];
         return $errors;
-      
     }
 }
-
-?>
