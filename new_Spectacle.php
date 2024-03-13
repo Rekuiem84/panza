@@ -56,7 +56,11 @@ if ($_SESSION["isConnected"]) :
       <form method="post">
         <div>
           <label for="name">Nom du spectacle</label>
-          <input type="text" id="name" name="name" value="">
+          <input type="text" id="name" name="name" value="<?php if ($form->isSubmitted()) {
+                                                            if (!empty($_POST["category"])) {
+                                                              echo $_POST["category"];
+                                                            }
+                                                          } ?>">
           <p><?php if ($form->isSubmitted()) {
                 if (!($form->isValidAnyForm($params))) {
                   echo $errors["name"];
@@ -65,12 +69,11 @@ if ($_SESSION["isConnected"]) :
         </div>
         <div>
           <label for="category">Catégorie</label>
-          <input type="text" id="category" name="category" value="
-        <?php if ($form->isSubmitted()) {
-          if (!empty($_POST["category"])) {
-            echo $_POST["category"];
-          }
-        } ?>">
+          <input type="text" id="category" name="category" value="<?php if ($form->isSubmitted()) {
+                                                                    if (!empty($_POST["category"])) {
+                                                                      echo $_POST["category"];
+                                                                    }
+                                                                  } ?>">
           <p><?php if ($form->isSubmitted()) {
                 if (!($form->isValidAnyForm($params))) {
                   echo $errors["category"];
@@ -79,12 +82,11 @@ if ($_SESSION["isConnected"]) :
         </div>
         <div>
           <label for="date">Date</label>
-          <input type="text" id="date" name="date" value="
-        <?php if ($form->isSubmitted()) {
-          if (!empty($_POST["date"])) {
-            echo $_POST["date"];
-          }
-        } ?>">
+          <input type="text" id="date" name="date" value="<?php if ($form->isSubmitted()) {
+                                                            if (!empty($_POST["date"])) {
+                                                              echo $_POST["date"];
+                                                            }
+                                                          } ?>">
           <p><?php if ($form->isSubmitted()) {
                 if (!($form->isValidAnyForm($params))) {
                   echo $errors["date"];
@@ -93,12 +95,11 @@ if ($_SESSION["isConnected"]) :
         </div>
         <div>
           <label for="start_time">Heure de début</label>
-          <input type="text" id="start_time" name="start_time" value="
-        <?php if ($form->isSubmitted()) {
-          if (!empty($_POST["start_time"])) {
-            echo $_POST["start_time"];
-          }
-        } ?>">
+          <input type="text" id="start_time" name="start_time" value="<?php if ($form->isSubmitted()) {
+                                                                        if (!empty($_POST["start_time"])) {
+                                                                          echo $_POST["start_time"];
+                                                                        }
+                                                                      } ?>">
           <p><?php if ($form->isSubmitted()) {
                 if (!($form->isValidAnyForm($params))) {
                   echo $errors["start_time"];
@@ -107,12 +108,11 @@ if ($_SESSION["isConnected"]) :
         </div>
         <div>
           <label for="address">Adresse</label>
-          <input type="text" id="address" name="address" value="
-        <?php if ($form->isSubmitted()) {
-          if (!empty($_POST["address"])) {
-            echo $_POST["address"];
-          }
-        } ?>">
+          <input type="text" id="address" name="address" value="<?php if ($form->isSubmitted()) {
+                                                                  if (!empty($_POST["address"])) {
+                                                                    echo $_POST["address"];
+                                                                  }
+                                                                } ?>">
           <p><?php if ($form->isSubmitted()) {
                 if (!($form->isValidAnyForm($params))) {
                   echo $errors["address"];
@@ -121,12 +121,11 @@ if ($_SESSION["isConnected"]) :
         </div>
         <div>
           <label for="nb_comedians">Nombre de comédiens</label>
-          <input type="text" id="nb_comedians" name="nb_comedians" value="
-        <?php if ($form->isSubmitted()) {
-          if (!empty($_POST["nb_comedians"])) {
-            echo $_POST["nb_comedians"];
-          }
-        } ?>">
+          <input type="text" id="nb_comedians" name="nb_comedians" value="<?php if ($form->isSubmitted()) {
+                                                                            if (!empty($_POST["nb_comedians"])) {
+                                                                              echo $_POST["nb_comedians"];
+                                                                            }
+                                                                          } ?>">
           <p><?php if ($form->isSubmitted()) {
                 if (!($form->isValidAnyForm($params))) {
                   echo $errors["nb_comedians"];
@@ -135,12 +134,11 @@ if ($_SESSION["isConnected"]) :
         </div>
         <div>
           <label for="description">Description</label>
-          <textarea id="description" name="description">
-          <?php if ($form->isSubmitted()) {
-            if (!empty($_POST["description"])) {
-              echo $_POST["description"];
-            }
-          } ?></textarea>
+          <textarea id="description" name="description"><?php if ($form->isSubmitted()) {
+                                                          if (!empty($_POST["description"])) {
+                                                            echo $_POST["description"];
+                                                          }
+                                                        } ?></textarea>
           <p><?php if ($form->isSubmitted()) {
                 if (!($form->isValidAnyForm($params))) {
                   echo $errors["description"];
