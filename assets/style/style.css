@@ -12,4 +12,158 @@ body {
   font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
+}
+
+.color-gradient {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to top right, hsl(31, 38%, 58%), hsl(35, 60%, 75%));
+}
+
+.login {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100dvh;
+  min-height: 100vh;
+}
+.login > div {
+  flex: 1 0 min(480px, 100%);
+  padding: 2.25rem 4rem;
+}
+.login__title-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  color: white;
+  background: linear-gradient(rgba(48, 34, 70, 0.95), rgba(48, 34, 70, 0.95)), url(../images/bg-1.jpg) center/cover no-repeat;
+}
+.login__title-cont > .img-cont {
+  max-width: 5rem;
+}
+.login__title-cont .title {
+  font-size: 3.45rem;
+  font-weight: 500;
+}
+.login__title-cont .title .color-gradient {
+  font-family: "Romelio", "Times New Roman", Times, serif;
+  font-size: 1.25em;
+}
+.login__title-cont .title + p {
+  font-size: 1.5rem;
+}
+.login__title-cont > div:last-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.login__title-cont > div:last-child i {
+  background-color: #fffdf9;
+  color: #000000;
+  padding: 0.2em;
+  border-radius: 50%;
+  font-size: 1.5em;
+}
+.login__title-cont > div:last-child p span {
+  font-weight: 600;
+}
+.login__form-cont {
+  display: flex;
+  flex-direction: column;
+  background: url(../images/bg-2.png) center/contain;
+  font-size: 1.125rem;
+}
+.login__form-cont .img-cont {
+  width: min(300px, 90%);
+  margin-inline: auto;
+  margin-block: 1rem;
+}
+.login__form-cont h2 {
+  font-size: 2.25rem;
+  font-family: "Romelio", "Times New Roman", Times, serif;
+  color: #302246;
+  font-weight: 400;
+}
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.login__field {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.25em;
+}
+.login__field label {
+  font-size: 1.375rem;
+  font-weight: 300;
+}
+.login__field input {
+  font-size: inherit;
+  border: none;
+  padding: 0.3em;
+  margin-top: 0.5em;
+  border: 2px solid transparent;
+  border-bottom: 2px solid currentColor;
+  outline: none;
+}
+.login__field input:focus-visible {
+  border: 2px solid currentColor;
+}
+.login__field input::placeholder {
+  font-weight: 300;
+}
+.login__field--additional {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6em;
+}
+.login__field--additional div, .login__field--additional a {
+  flex: 1 0 235px;
+}
+.login__field--additional input {
+  accent-color: #302246;
+  width: 1.25rem;
+  aspect-ratio: 1;
+  vertical-align: middle;
+}
+.login__field--additional label, .login__field--additional a {
+  font-size: inherit;
+}
+.login__field--additional a {
+  justify-self: right;
+}
+.login__form button {
+  color: #fffdf9;
+  background-color: #302246;
+  margin-top: 1em;
+  padding: 0.35em 2em;
+  font-size: 1.3em;
+  width: min(100%, 300px);
+  margin-inline: auto;
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=style.css.map */
