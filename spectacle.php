@@ -101,11 +101,11 @@ if ($f->isSubmitted()) {
       </div>
       <div>
         <label for="address">Adresse</label>
-        <input type="text" id="address" name="address" <?php if ($f->isSubmitted()) {
-                                                          if (!empty($_POST["address"])) {
-                                                            echo $_POST["address"];
-                                                          }
-                                                        } ?>>
+        <input type="text" id="address" name="address" value="<?php if ($f->isSubmitted()) {
+                                                                if (!empty($_POST["address"])) {
+                                                                  echo $_POST["address"];
+                                                                }
+                                                              } ?>">
         <p><?php if ($f->isSubmitted()) {
               if (!($f->isValid($params))) {
                 echo $errors["address"];
