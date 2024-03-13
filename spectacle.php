@@ -25,7 +25,7 @@ $errors = [];
 if($f->isSubmitted()){
   if ($f->isValidSpec($params)) {
     $nom=$_POST["name"];
-    $categorie=$_POST["category"];
+    $categorie = $_POST["category"];
     $date=$_POST["date"];
     $description=$_POST["description"];
     $nbrcom=$_POST["nb_comedians"];
@@ -101,11 +101,11 @@ if($f->isSubmitted()){
       </div>
       <div>
         <label for="address">Adresse</label>
-        <input type="text" id="address" name="address" <?php if ($f->isSubmitted()) {
+        <input type="text" id="address" name="address" value="<?php if ($f->isSubmitted()) {
                                                                                                   if (!empty($_POST["address"])) {
                                                                                                     echo $_POST["address"];
                                                                                                   }
-                                                                                                } ?>>
+                                                                                                } ?>">
         <p><?php if ($f->isSubmitted()) {
               if (!($f->isValid($params))) {
                 echo $errors["address"];

@@ -57,7 +57,7 @@ $message = "";
       </div>
     </div>
     <div></div>
-    <form action="#" method="POST">
+    <form method="POST">
       <div>
         <label for="email">Email</label>
         <input type="email" name="email" id="email" placeholder="votremail@exemple.com" value="<?php if ($f->isSubmitted()) {
