@@ -70,4 +70,14 @@ class Form
         ];
         return $errors;
     }
+    public function getUserData($email)
+    {
+        $db = new Db;
+        $co = $db->dbCo("panza", "root", "root");
+
+        $sql = "SELECT * FROM `membre` WHERE email = ?";
+        $param = [$email];
+        $result = $db->SQLWithParam($sql, $param, $co);
+        return $result;
+    }
 }

@@ -19,6 +19,9 @@ $font-stack-romelio: "Romelio", "Times New Roman", Times, serif;
 }
 body {
 	font-family: $font-stack-montserrat;
+	background-image: url(../images/bg-2.png);
+	background-size: contain;
+	background-position: center;
 }
 img {
 	max-width: 100%;
@@ -106,6 +109,10 @@ a {
 		display: flex;
 		align-items: center;
 		gap: 1.5em;
+
+		& .user__name {
+			text-transform: capitalize;
+		}
 
 		& .img-cont {
 			max-width: 50px;
@@ -261,4 +268,81 @@ a {
 	color: rgb(235, 20, 20);
 	font-weight: 600;
 	margin-top: 0.8em;
+}
+.creation {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 3rem 1.5rem;
+	gap: 3rem;
+
+	& h1 {
+		width: min(1020px, 100%);
+		margin-inline: auto;
+		font-weight: 600;
+		text-decoration: underline;
+		font-size: 2rem;
+	}
+	& form {
+		width: min(1020px, 100%);
+		margin-inline: auto;
+		gap: 2rem;
+
+		& .form-content {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 2.5em max(2rem, 5vw);
+
+			& > div {
+				flex: 1 0 20ch;
+				font-size: 1.5rem;
+			}
+			& .field--textarea {
+				flex: 2 0 20ch;
+			}
+
+			& input,
+			& textarea {
+				display: block;
+				width: 100%;
+			}
+			& textarea {
+				resize: vertical;
+			}
+			& input,
+			& textarea {
+				font-size: inherit;
+				border: none;
+				padding: 0.3em;
+				margin-top: 0.2em;
+				border: 2px solid transparent;
+				border-bottom: 2px solid currentColor;
+				outline: none;
+
+				&:focus-visible {
+					border: 2px solid currentColor;
+				}
+
+				&::placeholder {
+					font-weight: 300;
+					opacity: 0.7;
+				}
+			}
+		}
+		& button {
+			color: $color-primary;
+			background-color: $color-accent;
+			margin-top: 2em;
+			padding: 0.35em 2em;
+			font-size: 1.3em;
+			width: min(100%, 300px);
+			margin-inline: auto;
+			cursor: pointer;
+		}
+	}
+	&--atelier {
+		& form .form-content > .field--textarea {
+			flex: 1 0 20ch;
+		}
+	}
 }
