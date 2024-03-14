@@ -23,9 +23,9 @@ if($f->isSubmitted()){
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
     $email = $_POST["email"];
-    $mdp = $_POST["mdp"];
-    $m->setMembre($id,$nom,$prenom,$email,$mdp);
+    $m->setMembre($nom,$prenom,$email,$id);
     $message = "Données modifiées avec succés";
+    header("Location: profil.php");
   }
 }
 
@@ -70,19 +70,15 @@ if($f->isSubmitted()){
     <form method="POST">
       <div>
         <label for="prenom">Prénom</label>
-        <input type="text" name="prenom" value="<?= $membre->getPrenom();?>">
+        <input type="text" name="prenom" value="<?= $m->getPrenom();?>">
       </div>
       <div>
         <label for="nom">Nom</label>
-        <input type="text" name="nom" value="<?= $membre->getNom();?>">
+        <input type="text" name="nom" value="<?= $m->getNom();?>">
       </div>
       <div>
         <label for="email">Email</label>
-        <input type="email" name="email" value="<?= $membre->getEmail();?>">
-      </div>
-      <div>
-        <label for="mdp">Mot de passe</label>
-        <input type="password" name="mdp" value="<?= $membre->getMdp();?>">
+        <input type="email" name="email" value="<?= $m->getEmail();?>">
       </div>
       <div>
         <button type="submit">Modifier les informations</button>

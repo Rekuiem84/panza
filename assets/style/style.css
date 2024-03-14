@@ -110,6 +110,10 @@ a {
 }
 .nav .user-cont .img-cont .bxs-cog {
   font-size: 3.3em;
+  transition: rotate 0.25s ease;
+}
+.nav .user-cont .img-cont .bxs-cog:hover {
+  rotate: -90deg;
 }
 
 .login {

@@ -65,7 +65,7 @@ if ($_SESSION["is_connected"]) :
         </div>
         <div class="user-cont">
           <p class="user__name"><?= $_SESSION["membre_prenom"]; ?></p>
-          <div class="img-cont"><img src="./assets/images/logo.png" alt="photo de profil"></div>
+          <div class="img-cont"><a href="profil.php"><i class='bx bxs-cog color-gradient'></i></a></div>
         </div>
       </nav>
     </header>

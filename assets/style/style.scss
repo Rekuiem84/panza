@@ -121,6 +121,11 @@ a {
 
 			& .bxs-cog {
 				font-size: 3.3em;
+				transition: rotate 0.25s ease;
+
+				&:hover {
+					rotate: -90deg;
+				}
 			}
 		}
 	}

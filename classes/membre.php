@@ -73,18 +73,16 @@ class membre
       $this->nom = $membre["nom"];
       $this->prenom = $membre["prenom"];
       $this->email = $membre["email"];
-      $this->mdp = $membre["mot_de_passe"];
-
     }
     }
 
-  public function setMembre($id,$nom,$prenom,$email,$mdp){
+  public function setMembre($nom,$prenom,$email,$id){
 
   $co = new Db();
   $db = $co->dbCo("panza","root","root");
 
-  $sql = "UPDATE `membre` SET `nom`=?, `prenom`=?, `email`=?, `mot_de_passe`=? WHERE id=?";
-  $param = [$id,$nom,$prenom,$email,$mdp];
+  $sql = "UPDATE `membre` SET `nom`=?, `prenom`=?, `email`=? WHERE id=?";
+  $param = [$nom,$prenom,$email,$id];
   $datas = $co->SQLWithParam($sql,$param,$db);
 
   }
