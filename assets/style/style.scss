@@ -46,7 +46,79 @@ a {
 	background-image: linear-gradient(to top right, $color1, $color2);
 }
 // Nav
+.nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2rem;
+	padding: 1.25rem 2.75rem;
+	background-color: $color-accent;
+	color: $color-primary;
 
+	& .logo-cont {
+		max-width: 170px;
+	}
+	& .content-cont {
+		display: flex;
+		align-items: center;
+		gap: 2em;
+
+		& > div {
+			position: relative;
+			font-size: 1.2rem;
+		}
+		& .nav__title {
+			font-family: $font-stack-romelio;
+			font-size: 1.2em;
+			padding: 0.5em;
+			cursor: pointer;
+			transition: color 0.25s ease;
+
+			& i {
+				transition: color 0.25s ease, rotate 0.25s ease;
+			}
+		}
+		& > div:hover :is(.nav__title, i) {
+			color: gold;
+		}
+		& > div:hover .nav__title i {
+			rotate: -180deg;
+		}
+		& > div:hover .nav__submenu,
+		&:hover + .nav__submenu {
+			display: grid;
+		}
+		& .nav__submenu {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			// left: -0.5em;
+			width: max-content;
+			background-color: $color-accent;
+			padding: 1em;
+			gap: 1em;
+			cursor: pointer;
+
+			& li:hover {
+				cursor: pointer;
+				text-decoration: underline;
+			}
+		}
+	}
+	& .user-cont {
+		display: flex;
+		align-items: center;
+		gap: 1.5em;
+
+		& .img-cont {
+			max-width: 50px;
+			aspect-ratio: 1;
+			border-radius: 50%;
+			cursor: pointer;
+		}
+	}
+}
 // Login
 .login {
 	display: flex;

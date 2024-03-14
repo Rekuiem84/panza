@@ -41,6 +41,73 @@ a {
   background-image: linear-gradient(to top right, hsl(31, 38%, 58%), hsl(35, 60%, 75%));
 }
 
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.25rem 2.75rem;
+  background-color: #302246;
+  color: #fffdf9;
+}
+.nav .logo-cont {
+  max-width: 170px;
+}
+.nav .content-cont {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+.nav .content-cont > div {
+  position: relative;
+  font-size: 1.2rem;
+}
+.nav .content-cont .nav__title {
+  font-family: "Romelio", "Times New Roman", Times, serif;
+  font-size: 1.2em;
+  padding: 0.5em;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+.nav .content-cont .nav__title i {
+  transition: color 0.25s ease, rotate 0.25s ease;
+}
+.nav .content-cont > div:hover :is(.nav__title, i) {
+  color: gold;
+}
+.nav .content-cont > div:hover .nav__title i {
+  rotate: -180deg;
+}
+.nav .content-cont > div:hover .nav__submenu, .nav .content-cont:hover + .nav__submenu {
+  display: grid;
+}
+.nav .content-cont .nav__submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: max-content;
+  background-color: #302246;
+  padding: 1em;
+  gap: 1em;
+  cursor: pointer;
+}
+.nav .content-cont .nav__submenu li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.nav .user-cont {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+.nav .user-cont .img-cont {
+  max-width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .login {
   display: flex;
   flex-wrap: wrap;

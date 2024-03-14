@@ -33,8 +33,11 @@ $message = "";
       $email = $_POST["email"];
       $mdp = $_POST["password"];
       if ($login->checkAccess($email, $mdp)) {
+        // ajouter un array avec toutes les infos du man avec une fonction de membre
         $_SESSION["isConnected"] = true;
         $_SESSION["isAdmin"] = true;
+        $_SESSION["membre_id"] = 1;
+        $_SESSION["membre_prenom"] = "mathis";
         $login->connect();
       } else {
         $message = "Email ou mot de passe incorrect";
