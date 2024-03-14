@@ -72,14 +72,10 @@ a {
 			font-size: 1.2em;
 			padding: 0.5em;
 			cursor: pointer;
-			transition: color 0.25s ease;
 
 			& i {
-				transition: color 0.25s ease, rotate 0.25s ease;
+				transition: rotate 0.25s ease;
 			}
-		}
-		& > div:hover :is(.nav__title, i) {
-			color: gold;
 		}
 		& > div:hover .nav__title i {
 			rotate: -180deg;

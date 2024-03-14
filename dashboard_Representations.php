@@ -42,14 +42,14 @@ if ($_SESSION["isConnected"]) :
         <div class="logo-cont"><img src="./assets/images/logo-horizontal.png" alt="logo de panza"></div>
         <div class="content-cont">
           <div>
-            <p class="nav__title">Tableau de bord <i class='bx bxs-down-arrow'></i></p>
+            <p class="nav__title color-gradient">Tableau de bord <i class='bx bxs-down-arrow color-gradient'></i></p>
             <ul class="nav__submenu">
               <li><a href="">Calendrier</a></li>
               <li><a href="">Voir les représentations</a></li>
             </ul>
           </div>
           <div>
-            <p class="nav__title">Création <i class='bx bxs-down-arrow'></i></p>
+            <p class="nav__title color-gradient">Création <i class='bx bxs-down-arrow color-gradient'></i></p>
             <ul class="nav__submenu">
               <li><a href="./new_Spectacle.php">Créer un nouveau spectacle</a></li>
               <li><a href="./new_Atelier.php">Créer un nouvel atelier</a></li>
@@ -71,7 +71,7 @@ if ($_SESSION["isConnected"]) :
           <th>Categorie</th>
           <th>Date</th>
           <th>Description</th>
-          <th>Status</th>
+          <th>Statut</th>
           <th>Actions</th>
         </tr>
 
