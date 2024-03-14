@@ -90,6 +90,7 @@ a {
   padding: 1em;
   gap: 1em;
   cursor: pointer;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.25);
 }
 .nav .content-cont .nav__submenu li:hover {
   cursor: pointer;
@@ -313,6 +314,12 @@ a {
 }
 .creation--atelier form .form-content > .field--textarea {
   flex: 1 0 20ch;
+}
+
+.calendrier h1 {
+  font-size: 3rem;
+  font-size: "Romelio", "Times New Roman", Times, serif;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -169,6 +169,7 @@ if ($_SESSION["is_connected"]) :
           </div>
         </div>
         <button type="submit">Ajouter l'atelier</button>
+        <?= (isset($_GET["success"])) ? "<p>Spectacle ajouté avec succès</p>" : ""; ?>
       </form>
     </main>
   </body>

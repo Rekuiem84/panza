@@ -45,6 +45,7 @@ if ($_SESSION["is_connected"]) :
       }
       $salleId = $spectacle->getSalleId($addresse);
       $spectacle->insertSpectacle($nom, $categorie, $description, $date, $nb_comediens, $salleId, $heure);
+      header("Location: new_Spectacle.php?success=true");
     } else {
       $errors = $form->getErrorsSpec();
     }
@@ -183,6 +184,7 @@ if ($_SESSION["is_connected"]) :
           </div>
         </div>
         <button type="submit">Ajouter le spectacle</button>
+        <?= (isset($_GET["success"])) ? "<p>Spectacle ajouté avec succès</p>" : ""; ?>
       </form>
     </main>
   </body>
