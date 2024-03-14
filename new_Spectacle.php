@@ -31,16 +31,20 @@ if ($_SESSION["isConnected"]) :
       $categorie = $_POST["category"];
       $description = $_POST["description"];
       $date = $_POST["date"];
-      $nb_comedians = $_POST["nb_comedians"];
+      $nb_comediens = $_POST["nb_comediens"];
       $heure = $_POST["start_time"];
       $addresse = $_POST["address"];
 
       $spectacle = new Spectacle($nom, $categorie, $description, $date, $nb_comediens, $addresse, $heure);
 
-      $spectacle->insertSpectacle($nom, $categorie, $description, $date, $nb_comedians, $heure);
-      $spectacle->insertSalle($addresse);
+      $adressAlreadyExists = $spectacle->isAdressInDb($addresse);
+      if (!$adressAlreadyExists) {
+        $spectacle->insertSalle($addresse);
+      }
+      $salleId = $spectacle->getSalleId($addresse);
+      $spectacle->insertSpectacle($nom, $categorie, $description, $date, $nb_comediens, $salleId, $heure);
     } else {
-      $errors = $formorm->getErrorsSpec();
+      $errors = $form->getErrorsSpec();
     }
   }
 
@@ -57,8 +61,8 @@ if ($_SESSION["isConnected"]) :
         <div>
           <label for="name">Nom du spectacle</label>
           <input type="text" id="name" name="name" value="<?php if ($form->isSubmitted()) {
-                                                            if (!empty($_POST["category"])) {
-                                                              echo $_POST["category"];
+                                                            if (!empty($_POST["name"])) {
+                                                              echo $_POST["name"];
                                                             }
                                                           } ?>">
           <p><?php if ($form->isSubmitted()) {
@@ -120,15 +124,15 @@ if ($_SESSION["isConnected"]) :
               } ?></p>
         </div>
         <div>
-          <label for="nb_comedians">Nombre de comédiens</label>
-          <input type="text" id="nb_comedians" name="nb_comedians" value="<?php if ($form->isSubmitted()) {
-                                                                            if (!empty($_POST["nb_comedians"])) {
-                                                                              echo $_POST["nb_comedians"];
+          <label for="nb_comediens">Nombre de comédiens</label>
+          <input type="text" id="nb_comediens" name="nb_comediens" value="<?php if ($form->isSubmitted()) {
+                                                                            if (!empty($_POST["nb_comediens"])) {
+                                                                              echo $_POST["nb_comediens"];
                                                                             }
                                                                           } ?>">
           <p><?php if ($form->isSubmitted()) {
                 if (!($form->isValidAnyForm($params))) {
-                  echo $errors["nb_comedians"];
+                  echo $errors["nb_comediens"];
                 }
               } ?></p>
         </div>

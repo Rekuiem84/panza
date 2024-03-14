@@ -45,7 +45,7 @@ class Form
             "date" => empty($_POST["date"]) ? "Merci de renseigner la date" : "",
             "start_time" => empty($_POST["start_time"]) ? "Merci de renseigner l'heure de début" : "",
             "address" => empty($_POST["address"]) ? "Merci de renseigner l'addresse" : "",
-            "nb_comedians" => empty($_POST["nb_comedians"]) ? "Merci de renseigner le nombre de comédien" : "",
+            "nb_comediens" => empty($_POST["nb_comediens"]) ? "Merci de renseigner le nombre de comédien" : "",
             "description" => empty($_POST["description"]) ? "Merci de renseigner la description" : ""
         ];
         return $errors;
