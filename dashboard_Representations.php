@@ -51,9 +51,9 @@ if ($_SESSION["isConnected"]) :
           <div>
             <p class="nav__title">Création <i class='bx bxs-down-arrow'></i></p>
             <ul class="nav__submenu">
-              <li><a href="">Créer un nouveau spectacle</a></li>
-              <li><a href="">Créer un nouvel atelier</a></li>
-              <li><a href="">Ajouter un nouveau membre</a></li>
+              <li><a href="./new_Spectacle.php">Créer un nouveau spectacle</a></li>
+              <li><a href="./new_Atelier.php">Créer un nouvel atelier</a></li>
+              <li><a href="./new_Membre.php">Ajouter un nouveau membre</a></li>
             </ul>
           </div>
         </div>

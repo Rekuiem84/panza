@@ -1,5 +1,4 @@
 <!-- Pour creer un atelier -->
-<!-- Pour creer un spectacle -->
 <?php
 
 require "classes/db.php";
