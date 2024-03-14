@@ -13,15 +13,15 @@ if ($_SESSION["is_connected"]) :
   $representation->getRepresentation($id);
 
   $c = new comment();
-  $comments = $c->getAllComments();
+  $comments = $c->getAllCommentsById($id);
 
   if (!empty($_POST["prenom"]) && !empty($_POST["comment"])) {
 
     $comment = new comment();
-    $membre = $representation->getId();
-    // $representation = ID UTILISATEUR;
+    $membre = $id;
+    $representation_id = $c->getRepresentationId();
     $contenu = $_POST["comment"];
-    $comment->insertComment($membre, $representation, $contenu);
+    $comment->insertComment($membre, $representation_id, $contenu);
   }
 
 ?>
@@ -99,6 +99,27 @@ if ($_SESSION["is_connected"]) :
       </form>
 
       <h2>Commentaires :</h2>
+
+      <table>
+        <tr>
+          <th>Utilisateurs</th>
+          <th>Commenatires</th>
+        </tr>
+
+        <?php
+
+        foreach ($comments as $comment) :
+        ?>
+          <tr>
+            <td><?= $comment['utilisateur']; ?></td>
+            <td><?= $comment['contenu']; ?></td>
+          </tr>
+        <?php
+
+        endforeach;
+
+        ?>
+      </table>
 
     </main>
 

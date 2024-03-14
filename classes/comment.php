@@ -73,6 +73,17 @@ Class comment{
         return $co->SQLWithoutParam("SELECT * FROM commentaire",$db);
     }
 
+        public function getAllCommentsById($commentId)
+    {
+    
+        $co = new Db();
+        $db = $co->dbCo("panza","root","root");
+        $param = [$commentId];
+        return $co->SQLWithParam("SELECT CONCAT(`prenom`,' ' ,`nom`) utilisateur, `contenu` FROM `membre` m INNER JOIN `commentaire` c ON m.id=c.membre_id WHERE `representation_id`=?",$param,$db);
+    }
+
+    
+
 }
 
 ?>
