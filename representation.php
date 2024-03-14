@@ -1,1 +1,0 @@
-<!-- Pour voir les infos d'un représentation -->

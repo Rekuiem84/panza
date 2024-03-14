@@ -115,13 +115,22 @@ a {
 		}
 
 		& .img-cont {
-			max-width: 50px;
+			width: 50px;
 			aspect-ratio: 1;
-			border-radius: 50%;
 			cursor: pointer;
+
+			& .bxs-cog {
+				font-size: 3.3em;
+				transition: rotate 0.25s ease;
+
+				&:hover {
+					rotate: -90deg;
+				}
+			}
 		}
 	}
 }
+
 // Login
 .login {
 	display: flex;

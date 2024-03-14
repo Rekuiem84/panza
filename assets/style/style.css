@@ -105,10 +105,16 @@ a {
   text-transform: capitalize;
 }
 .nav .user-cont .img-cont {
-  max-width: 50px;
+  width: 50px;
   aspect-ratio: 1;
-  border-radius: 50%;
   cursor: pointer;
+}
+.nav .user-cont .img-cont .bxs-cog {
+  font-size: 3.3em;
+  transition: rotate 0.25s ease;
+}
+.nav .user-cont .img-cont .bxs-cog:hover {
+  rotate: -90deg;
 }
 
 .login {
