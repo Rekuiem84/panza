@@ -75,7 +75,7 @@ if ($_SESSION["isConnected"]) :
         </div>
         <div class="user-cont">
           <p><?= $_SESSION["membre_prenom"]; ?></p>
-          <div class="img-cont"><img src="./assets/images/logo.png" alt="photo de profil"></div>
+          <div class="img-cont"><i class='bx bxs-cog color-gradient' ></i></div>
         </div>
       </nav>
     </header>
