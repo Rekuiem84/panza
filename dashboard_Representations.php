@@ -49,7 +49,7 @@ if ($_SESSION["isConnected"]) :
             </ul>
           </div>
           <div>
-            <p class="nav__title">Création <i class='bx bxs-down-arrow'></i></p>
+            <p class="nav__title">Creation <i class='bx bxs-down-arrow'></i></p>
             <ul class="nav__submenu">
               <li><a href="./new_Spectacle.php">Créer un nouveau spectacle</a></li>
               <li><a href="./new_Atelier.php">Créer un nouvel atelier</a></li>
