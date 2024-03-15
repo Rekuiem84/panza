@@ -6,6 +6,10 @@ require "classes/representation.php";
 session_start();
 
 if ($_SESSION["is_connected"]) :
+  if (isset($_POST["deconnexion"])) {
+    session_destroy();
+    header("Location: index.php");
+  }
 
   $id = $_GET["id"];
 
@@ -13,13 +17,12 @@ if ($_SESSION["is_connected"]) :
   $representation->getRepresentation($id);
 
   $c = new comment();
-  $comments = $c->getAllCommentsById($id);
 
-  if (!empty($_POST["prenom"]) && !empty($_POST["comment"])) {
+  if (!empty($_POST["comment"])) {
 
     $comment = new comment();
-    $membre = $id;
-    $representation_id = $c->getRepresentationId();
+    $membre = $_SESSION["membre_id"];
+    $representation_id = $_GET["id"];
     $contenu = $_POST["comment"];
     $comment->insertComment($membre, $representation_id, $contenu);
   }
@@ -51,74 +54,64 @@ if ($_SESSION["is_connected"]) :
               <li><a href="./dashboard_Representations.php">Voir les représentations</a></li>
             </ul>
           </div>
-          <?php
-          if ($_SESSION["is_admin"]) :
-          ?>
-            <div>
-              <p class="nav__title color-gradient">Création <i class='bx bxs-down-arrow color-gradient'></i></p>
-              <ul class="nav__submenu">
-                <li><a href="./new_Spectacle.php">Créer un nouveau spectacle</a></li>
-                <li><a href="./new_Atelier.php">Créer un nouvel atelier</a></li>
-                <li><a href="./new_Membre.php">Ajouter un nouveau membre</a></li>
-              </ul>
-            </div>
-          <?php
-          endif;
-          ?>
+          <div>
+            <p class="nav__title">Création <i class='bx bxs-down-arrow'></i></p>
+            <ul class="nav__submenu">
+              <li><a href="./new_Spectacle.php">Créer un nouveau spectacle</a></li>
+              <li><a href="./new_Atelier.php">Créer un nouvel atelier</a></li>
+              <li><a href="./new_Membre.php">Ajouter un nouveau membre</a></li>
+            </ul>
+          </div>
         </div>
         <div class="user-cont">
-          <p class="user__name"><?= $_SESSION["membre_prenom"]; ?></p>
-          <div class="img-cont"><img src="./assets/images/logo.png" alt="photo de profil"></div>
+          <p><?= $_SESSION["membre_prenom"]; ?></p>
+          <div class="img-cont">
+            <a href="profil.php"><i class='bx bxs-cog color-gradient'></i></a>
+            <form method="post" class="deconnexion">
+              <input type="hidden" name="deconnexion" value="true">
+              <button>Se déconnecter</button>
+            </form>
+          </div>
         </div>
       </nav>
     </header>
 
-    <main>
+    <main class="representation-infos">
       <h1><?= $representation->getNom(); ?></h1>
-      <p><?= $representation->getType() ?></p>
-      <p><?= $representation->getCategorie() ?></p>
-      <p><?= $representation->getDescription() ?></p>
-      <p><?= $representation->getDate() ?></p>
-      <p><?= $representation->getHeure() ?></p>
-      <p><?= $representation->getStatus() ?></p>
+      <p>Type : <?= $representation->getType() ?></p>
+      <p>Catégorie : <?= $representation->getCategorie() ?></p>
+      <p>Description : <?= $representation->getDescription() ?></p>
+      <p>Date : <?= $representation->getDate() ?></p>
+      <p>Salle : <?= $representation->getSalle() ?></p>
+      <p>Adresse : <?= $representation->getAdresse() ?></p>
+      <p>Heure de début : <?= $representation->getHeure() ?></p>
+      <p>Statut : <?= $representation->getStatus() ?></p>
 
 
-      <form action="#" method="POST">
-        <h2>Poster un commentaire</h2>
-        <div>
-          <label for="prénom">Prénom</label>
-          <input type="text" name="prenom" id="prenom">
-        </div>
+      <h2 class="title">Poster un commentaire</h2>
+      <form method="POST" class="comment-form">
         <div>
           <label for="comment">Commentaire</label>
           <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
         </div>
-        <div>
-          <button>Poster</button>
-        </div>
+        <button>Poster</button>
       </form>
 
-      <h2>Commentaires :</h2>
+      <h2 class="title">Commentaires :</h2>
 
-      <table>
-        <tr>
-          <th>Utilisateurs</th>
-          <th>Commenatires</th>
-        </tr>
+      <?php
+      $comments = $c->getAllCommentsById($id);
 
-        <?php
+      foreach ($comments as $comment) :
+      ?>
+        <div class="comment">
+          <p><span class="bold underline"><?= $comment['utilisateur']; ?></span> : <?= $comment['contenu']; ?></p>
+        </div>
+      <?php
 
-        foreach ($comments as $comment) :
-        ?>
-          <tr>
-            <td><?= $comment['utilisateur']; ?></td>
-            <td><?= $comment['contenu']; ?></td>
-          </tr>
-        <?php
+      endforeach;
 
-        endforeach;
-
-        ?>
+      ?>
       </table>
 
     </main>

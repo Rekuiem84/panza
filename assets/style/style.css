@@ -32,6 +32,10 @@ a {
   text-decoration: underline;
 }
 
+.bold {
+  font-weight: 600;
+}
+
 .hidden {
   display: none;
 }
@@ -45,6 +49,7 @@ a {
 }
 
 .nav {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,6 +86,7 @@ a {
   display: grid;
 }
 .nav .content-cont .nav__submenu {
+  z-index: 10;
   display: none;
   position: absolute;
   top: 100%;
@@ -100,6 +106,7 @@ a {
   display: flex;
   align-items: center;
   gap: 1.5em;
+  position: relative;
 }
 .nav .user-cont .user__name {
   text-transform: capitalize;
@@ -115,6 +122,32 @@ a {
 }
 .nav .user-cont .img-cont .bxs-cog:hover {
   rotate: -90deg;
+}
+.nav .user-cont a:hover + .deconnexion, .nav .user-cont .deconnexion:hover {
+  display: block;
+}
+.nav .user-cont .deconnexion {
+  z-index: 10;
+  display: none;
+  position: absolute;
+  top: 95%;
+  right: 0;
+  width: max-content;
+  background-color: #302246;
+  padding: 1em;
+  gap: 1em;
+  cursor: pointer;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.25);
+}
+.nav .user-cont .deconnexion button {
+  background: transparent;
+  color: inherit;
+  border: none;
+  font-size: inherit;
+}
+.nav .user-cont .deconnexion button:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .login {
@@ -279,9 +312,30 @@ a {
 .creation form .form-content .field--textarea {
   flex: 2 0 20ch;
 }
+.creation form .form-content .field--radio-cont {
+  flex: 2 0 20ch;
+}
+.creation form .form-content .field--radio-cont .field--radio {
+  margin-top: 0.4em;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.creation form .form-content .field--radio-cont .field--radio * {
+  width: auto;
+}
+.creation form .form-content .field--radio-cont .field--radio input {
+  width: 1.5rem;
+  aspect-ratio: 1;
+  margin-top: 0;
+}
+.creation form .form-content .field--radio-cont .field--radio label:last-of-type {
+  margin-left: 2em;
+}
 .creation form .form-content input, .creation form .form-content textarea {
   display: block;
   width: 100%;
+  accent-color: #302246;
 }
 .creation form .form-content textarea {
   resize: vertical;
@@ -320,6 +374,67 @@ a {
   font-size: 3rem;
   font-size: "Romelio", "Times New Roman", Times, serif;
   text-align: center;
+  margin-block: 1em;
+}
+
+.representations {
+  padding: 2.5rem 4rem;
+}
+.representations > div {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 8px 0 rgba(48, 34, 70, 0.15), inset 4px 4px 12px 0 rgba(48, 34, 70, 0.15);
+  backdrop-filter: blur(4px);
+}
+.representations > div > h2 {
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: 2rem;
+}
+.representations > div .representations-cont {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+  font-size: 1.125rem;
+}
+.representations > div .representations-cont > a {
+  text-decoration: underline;
+}
+
+.representation-infos {
+  padding: 2.5rem 4rem;
+  font-size: 1.125rem;
+}
+.representation-infos > h1 {
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: 2rem;
+}
+.representation-infos > h1 ~ p {
+  margin-top: 1em;
+}
+.representation-infos .title {
+  font-size: 1.65rem;
+  margin-top: 1em;
+}
+.representation-infos .comment-form > div {
+  display: flex;
+  flex-direction: column;
+}
+.representation-infos .comment-form label {
+  margin-top: 1em;
+}
+.representation-infos .comment-form button {
+  font-size: inherit;
+  margin-top: 1em;
+}
+.representation-infos .comment-form textarea {
+  border: 2px solid #302246;
+}
+.representation-infos .comment {
+  padding: 0.25em 1em;
+  margin-top: 1em;
+  border-left: 3px solid #302246;
 }
 
 /*# sourceMappingURL=style.css.map */
