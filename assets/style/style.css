@@ -430,6 +430,7 @@ a {
 }
 .representation-infos .comment-form textarea {
   border: 2px solid #302246;
+  resize: vertical;
 }
 .representation-infos .comment {
   padding: 0.25em 1em;
