@@ -81,6 +81,7 @@ if ($_SESSION["is_connected"]) :
       <p>Type : <?= $representation->getType() ?></p>
       <p>Catégorie : <?= $representation->getCategorie() ?></p>
       <p>Description : <?= $representation->getDescription() ?></p>
+      <p>Combre de comédiens : <?= $representation->getNbComediens() ?></p>
       <p>Date : <?= $representation->getDate() ?></p>
       <p>Salle : <?= $representation->getSalle() ?></p>
       <p>Adresse : <?= $representation->getAdresse() ?></p>
