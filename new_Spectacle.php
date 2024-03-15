@@ -71,14 +71,20 @@ if ($_SESSION["is_connected"]) :
               <li><a href="./dashboard_Representations.php">Voir les représentations</a></li>
             </ul>
           </div>
-          <div>
-            <p class="nav__title color-gradient">Création <i class='bx bxs-down-arrow color-gradient'></i></p>
-            <ul class="nav__submenu">
-              <li><a href="./new_Spectacle.php">Créer un nouveau spectacle</a></li>
-              <li><a href="./new_Atelier.php">Créer un nouvel atelier</a></li>
-              <li><a href="./new_Membre.php">Ajouter un nouveau membre</a></li>
-            </ul>
-          </div>
+          <?php
+          if ($_SESSION["is_admin"]) :
+          ?>
+            <div>
+              <p class="nav__title color-gradient">Création <i class='bx bxs-down-arrow color-gradient'></i></p>
+              <ul class="nav__submenu">
+                <li><a href="./new_Spectacle.php">Créer un nouveau spectacle</a></li>
+                <li><a href="./new_Atelier.php">Créer un nouvel atelier</a></li>
+                <li><a href="./new_Membre.php">Ajouter un nouveau membre</a></li>
+              </ul>
+            </div>
+          <?php
+          endif;
+          ?>
         </div>
         <div class="user-cont">
           <p><?= $_SESSION["membre_prenom"]; ?></p>
