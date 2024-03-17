@@ -23,6 +23,7 @@ $message = "";
   <title>Panza - Troupe de théâtre</title>
   <link rel="stylesheet" href="./assets/style/style.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="description" content="Troupe de théâtre sur bordaux">
 </head>
 
 <body>
