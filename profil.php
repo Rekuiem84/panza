@@ -27,11 +27,11 @@ if ($_SESSION["is_connected"]) :
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
     $email = $_POST["email"];
-    $mdp = sha1($_POST["password"]);
+    $mdp = $_POST["password"];
     $params = [$nom, $prenom, $email, $mdp];
 
-    if ($form->isValidAnyForm($params)) {
-      $membre->setMembre($nom, $prenom, $email, $mdp, $id);
+    if ($form->isValidMembre($params)) {
+      $membre->setMembre($nom, $prenom, $email, sha1($mdp), $id);
       header("Location: profil.php?success=true");
     } else {
       $errors = $form->getErrorsMembre();
