@@ -38,13 +38,13 @@ if ($_SESSION["is_connected"]) :
   <?php
 
   if ($form->isSubmitted()) {
-    if ($form->isValidAnyForm($params)) {
-      var_dump($_POST);
-      $prenom = $_POST["prenom"];
-      $nom = $_POST["nom"];
-      $email = $_POST["email"];
-      $password = $_POST["password"];
-      $is_admin = $_POST["is_admin"];
+    $prenom = $_POST["prenom"];
+    $nom = $_POST["nom"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $is_admin = $_POST["is_admin"];
+
+    if ($form->isValidMembre()) {
 
       $membre = new membre($prenom, $nom, $email, $password, $is_admin);
 
@@ -75,7 +75,7 @@ if ($_SESSION["is_connected"]) :
                                                                   }
                                                                 } ?>">
             <p><?php if ($form->isSubmitted()) {
-                  if (!($form->isValidAnyForm($params))) {
+                  if (!($form->isValidMembre())) {
                     echo $errors["nom"];
                   }
                 } ?></p>
@@ -88,7 +88,7 @@ if ($_SESSION["is_connected"]) :
                                                             }
                                                           } ?>">
             <p><?php if ($form->isSubmitted()) {
-                  if (!($form->isValidAnyForm($params))) {
+                  if (!($form->isValidMembre())) {
                     echo $errors["nom"];
                   }
                 } ?></p>
@@ -101,7 +101,7 @@ if ($_SESSION["is_connected"]) :
                                                                                                     }
                                                                                                   } ?>">
             <p><?php if ($form->isSubmitted()) {
-                  if (!($form->isValidAnyForm($params))) {
+                  if (!($form->isValidMembre())) {
                     echo $errors["email"];
                   }
                 } ?></p>
@@ -114,7 +114,7 @@ if ($_SESSION["is_connected"]) :
                                                                           }
                                                                         } ?>">
             <p><?php if ($form->isSubmitted()) {
-                  if (!($form->isValidAnyForm($params))) {
+                  if (!($form->isValidMembre())) {
                     echo $errors["password"];
                   }
                 } ?></p>

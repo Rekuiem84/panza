@@ -29,7 +29,7 @@ class Form
     public function isValidAnyForm($params): bool
     {
         foreach ($params as $param) {
-            if (empty($_POST[$param])) {
+            if (empty($param)) {
                 return false;
             }
         }
@@ -45,19 +45,15 @@ class Form
             "date" => empty($_POST["date"]) ? "Merci de renseigner la date" : "",
             "start_time" => empty($_POST["start_time"]) ? "Merci de renseigner l'heure de début" : "",
             "address" => empty($_POST["address"]) ? "Merci de renseigner l'addresse" : "",
-            "nb_comediens" => empty($_POST["nb_comediens"]) ? "Merci de renseigner le nombre de comédien" : "",
+            "nb_comediens" => empty($_POST["nb_comediens"]) ? "Merci de renseigner le nombre de comédiens" : "",
             "description" => empty($_POST["description"]) ? "Merci de renseigner la description" : ""
         ];
         return $errors;
     }
 
-    public function isValidMembre($params)
+    public function isValidMembre()
     {
-        $validated = false;
-        if (!empty($_POST["prenom"]) && !empty($_POST["nom"]) && !empty($_POST["email"]) && !empty($_POST["mdp"])) {
-            $validated = true;
-        }
-        return $validated;
+        return (!empty($_POST["prenom"]) && !empty($_POST["nom"]) && !empty($_POST["email"]) && !empty($_POST["password"]));
     }
 
     public function getErrorsMembre()
@@ -66,7 +62,7 @@ class Form
             "prenom" => empty($_POST["prenom"]) ? "Merci de renseigner le prenom" : "",
             "nom" => empty($_POST["nom"]) ? "Merci de renseigner le nom" : "",
             "email" => empty($_POST["email"]) ? "Merci de renseigner l'email" : "",
-            "mdp" => empty($_POST["mdp"]) ? "Merci de renseigner le mot de passe" : ""
+            "password" => empty($_POST["password"]) ? "Merci de renseigner le mot de passe" : ""
         ];
         return $errors;
     }

@@ -36,13 +36,15 @@ if ($_SESSION["is_connected"]) :
   <?php
 
   if ($form->isSubmitted()) {
+    $nom = $_POST["name"];
+    $description = $_POST["description"];
+    $date = $_POST["date"];
+    $nb_comediens = intval($_POST["nb_comediens"]);
+    $heure = $_POST["start_time"];
+    $addresse = $_POST["address"];
+    $params = [$nom, $description, $date, $nb_comediens, $heure, $addresse];
+
     if ($form->isValidAnyForm($params)) {
-      $nom = $_POST["name"];
-      $description = $_POST["description"];
-      $date = $_POST["date"];
-      $nb_comediens = $_POST["nb_comediens"];
-      $heure = $_POST["start_time"];
-      $addresse = $_POST["address"];
 
       $spectacle = new Atelier($nom, $description, $date, $nb_comediens, $addresse, $heure);
 
@@ -52,6 +54,7 @@ if ($_SESSION["is_connected"]) :
       }
       $salleId = $spectacle->getSalleId($addresse);
       $spectacle->insertAtelier($nom, $description, $date, $nb_comediens, $salleId, $heure);
+      header("Location: new_Atelier.php?success=true");
     } else {
       $errors = $form->getErrorsSpec();
     }
@@ -77,7 +80,7 @@ if ($_SESSION["is_connected"]) :
                                                                                                 }
                                                                                               } ?>">
             <p><?php if ($form->isSubmitted()) {
-                  if (!($form->isValidAnyForm($params))) {
+                  if ((!$form->isValidAnyForm($params))) {
                     echo $errors["name"];
                   }
                 } ?></p>
@@ -90,7 +93,7 @@ if ($_SESSION["is_connected"]) :
                                                                                         }
                                                                                       } ?>">
             <p><?php if ($form->isSubmitted()) {
-                  if (!($form->isValidAnyForm($params))) {
+                  if ((!$form->isValidAnyForm($params))) {
                     echo $errors["date"];
                   }
                 } ?></p>
@@ -103,7 +106,7 @@ if ($_SESSION["is_connected"]) :
                                                                                               }
                                                                                             } ?>">
             <p><?php if ($form->isSubmitted()) {
-                  if (!($form->isValidAnyForm($params))) {
+                  if ((!$form->isValidAnyForm($params))) {
                     echo $errors["start_time"];
                   }
                 } ?></p>
@@ -116,7 +119,7 @@ if ($_SESSION["is_connected"]) :
                                                                                                                     }
                                                                                                                   } ?>">
             <p><?php if ($form->isSubmitted()) {
-                  if (!($form->isValidAnyForm($params))) {
+                  if ((!$form->isValidAnyForm($params))) {
                     echo $errors["address"];
                   }
                 } ?></p>
@@ -129,20 +132,20 @@ if ($_SESSION["is_connected"]) :
                                                                       }
                                                                     } ?></textarea>
             <p><?php if ($form->isSubmitted()) {
-                  if (!($form->isValidAnyForm($params))) {
+                  if ((!$form->isValidAnyForm($params))) {
                     echo $errors["description"];
                   }
                 } ?></p>
           </div>
           <div>
             <label for="nb_comediens">Nombre de comédiens</label>
-            <input type="text" id="nb_comediens" name="nb_comediens" placeholder="30" value="<?php if ($form->isSubmitted()) {
-                                                                                                if (!empty($_POST["nb_comediens"])) {
-                                                                                                  echo $_POST["nb_comediens"];
-                                                                                                }
-                                                                                              } ?>">
+            <input type="number" id="nb_comediens" name="nb_comediens" placeholder="30" value="<?php if ($form->isSubmitted()) {
+                                                                                                  if (!empty($_POST["nb_comediens"])) {
+                                                                                                    echo $_POST["nb_comediens"];
+                                                                                                  }
+                                                                                                } ?>">
             <p><?php if ($form->isSubmitted()) {
-                  if (!($form->isValidAnyForm($params))) {
+                  if ((!$form->isValidAnyForm($params))) {
                     echo $errors["nb_comediens"];
                   }
                 } ?></p>

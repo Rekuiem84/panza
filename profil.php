@@ -24,14 +24,17 @@ if ($_SESSION["is_connected"]) :
 
 
   if ($form->isSubmitted()) {
+    $nom = $_POST["nom"];
+    $prenom = $_POST["prenom"];
+    $email = $_POST["email"];
+    $mdp = sha1($_POST["password"]);
+    $params = [$nom, $prenom, $email, $mdp];
+
     if ($form->isValidAnyForm($params)) {
-      $nom = $_POST["nom"];
-      $prenom = $_POST["prenom"];
-      $email = $_POST["email"];
-      $mdp = sha1($_POST["password"]);
       $membre->setMembre($nom, $prenom, $email, $mdp, $id);
-      $message = "Données modifiées avec succés";
       header("Location: profil.php?success=true");
+    } else {
+      $errors = $form->getErrorsMembre();
     }
   }
 
@@ -83,7 +86,7 @@ if ($_SESSION["is_connected"]) :
                                                                 } ?>">
             <p><?php if ($form->isSubmitted()) {
                   if (!($form->isValidAnyForm($params))) {
-                    echo $errors["nom"];
+                    echo $errors["prenom"];
                   }
                 } ?></p>
           </div>
